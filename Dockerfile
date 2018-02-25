@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:17.10
 
 LABEL maintainer="Mark Lopez <m@silvenga.com>"
 
@@ -16,6 +16,9 @@ RUN set -xe \
     && rm -r /var/lib/apt/lists/*
 
 COPY rootfs/ /
+
+EXPOSE 4505
+EXPOSE 4506
 
 VOLUME [ "/etc/salt/pki", "/var/cache/salt", "/var/log/salt", "/var/run/salt" ]
 

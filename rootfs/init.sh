@@ -1,3 +1,3 @@
 #!/bin/bash
 
-salt-master --log-level=debug
+salt-master --log-level=info
