@@ -1,4 +1,4 @@
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 
 LABEL maintainer="Mark Lopez <m@silvenga.com>"
 
@@ -6,13 +6,13 @@ ENV NOTVISIBLE "in users profile"
 
 RUN set -xe \
     && DEBIAN_FRONTEND=noninteractive apt-get update -q \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y wget \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y wget gnupg \
     && wget -O - https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub | apt-key add - \
     && echo "deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main" > /etc/apt/sources.list.d/saltstack.list \
     && DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    salt-master=2017.7.4+ds-1 \
-    salt-api=2017.7.4+ds-1 \
+    salt-master=2018.3.0+ds-1 \
+    salt-api=2018.3.0+ds-1 \
     python-pygit2 \
     virt-what \
     openssh-server \
@@ -24,8 +24,7 @@ RUN set -xe \
 
 COPY rootfs/ /
 
-EXPOSE 4505
-EXPOSE 4506
+EXPOSE 4505 4506
 
 VOLUME [ "/etc/salt/pki", "/var/cache/salt", "/var/log/salt", "/var/run/salt" ]
 
