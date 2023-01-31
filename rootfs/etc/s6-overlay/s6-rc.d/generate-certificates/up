@@ -1,0 +1,3 @@
+#!/command/execlineb -P
+
+salt-run -linfo salt.cmd tls.create_self_signed_cert

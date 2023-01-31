@@ -1,7 +1,9 @@
-version: '2'
+version: '2.1'
 services:
   salt-master:
     build: .
     ports:
       - 4505:4505
       - 4506:4506
+    volumes:
+      - ./example/etc/salt:/etc/salt
