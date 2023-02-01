@@ -58,7 +58,8 @@ ADD rootfs/ /
 
 FROM build
 
-LABEL maintainer="Mark Lopez <m@silvenga.com>"
+LABEL maintainer "Mark Lopez <m@silvenga.com>"
+LABEL org.opencontainers.image.source https://github.com/silvenga-docker/salt-master
 
 EXPOSE 4505 \
     4506 \
