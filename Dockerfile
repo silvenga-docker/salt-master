@@ -67,4 +67,6 @@ EXPOSE 4505 \
 
 # VOLUME [ "/etc/salt", "/var/cache/salt", "/var/log/salt", "/var/run/salt" ]
 
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+
 CMD ["salt-master", "-linfo"]
