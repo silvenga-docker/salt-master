@@ -50,7 +50,7 @@ RUN set -xe \
     # For postgres support.
     && salt-pip install psycopg2-binary \
     # For gitfs support.
-    && salt-pip install pygit2==1.10.1 --no-deps \
+    && salt-pip install pygit2==1.7.0 --no-deps \
     # Default location for self-generated certs, set via the master's ca.cert_base_path.
     && mkdir /etc/pki \
     && chown 450:450 /etc/pki
