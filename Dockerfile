@@ -52,7 +52,8 @@ RUN set -xe \
     # For gitfs support.
     && salt-pip install pygit2==1.10.1 --no-deps \
     # Default location for self-generated certs, set via the master's ca.cert_base_path.
-    && mkdir /etc/pki
+    && mkdir /etc/pki \
+    && chown 450:450 /etc/pki
 
 ADD rootfs/ /
 
