@@ -1,6 +1,6 @@
 FROM ubuntu:jammy AS s6-overlay
 
-ARG S6_OVERLAY_VERSION=3.1.3.0
+ARG S6_OVERLAY_VERSION=3.1.6.2
 
 RUN set -ex \
     && apt-get update \
@@ -27,9 +27,9 @@ RUN set -ex \
 RUN set -ex \
     && adduser --uid 450 --group --shell /bin/sh --system --disabled-password salt
 
-ARG SALT_VERSION=3005
+ARG SALT_VERSION=3006
 RUN set -xe \
-    && curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/salt/py3/ubuntu/22.04/amd64/${SALT_VERSION}/salt-archive-keyring.gpg \
+    && curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/salt/py3/ubuntu/22.04/amd64/${SALT_VERSION}/SALT-PROJECT-GPG-PUBKEY-2023.gpg \
     && echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/salt/py3/ubuntu/22.04/amd64/${SALT_VERSION} jammy main" | tee /etc/apt/sources.list.d/salt.list \
     && apt-get update \
     && apt-get install -y \
@@ -50,7 +50,7 @@ RUN set -xe \
     # For postgres support.
     && salt-pip install psycopg2-binary \
     # For gitfs support.
-    && salt-pip install pygit2==1.6.1 --no-deps \
+    && salt-pip install pygit2==1.10.1 --no-deps \
     # Default location for self-generated certs, set via the master's ca.cert_base_path.
     && mkdir /etc/pki
 
