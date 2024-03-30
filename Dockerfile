@@ -49,7 +49,7 @@ RUN set -ex \
 RUN set -xe \
     # For postgres support.
     && salt-pip install psycopg2-binary \
-    # For gitfs support.
+    # For gitfs support. Version 1.7.0 doesn't require a home directory - Salt 3006 now runs with a user without a home directory.
     && salt-pip install pygit2==1.7.0 --no-deps \
     # Default location for self-generated certs, set via the master's ca.cert_base_path.
     && mkdir /etc/pki \
