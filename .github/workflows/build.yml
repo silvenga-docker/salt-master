@@ -10,13 +10,5 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: silvenga-docker/build-image@latest
-      with:
-        dockerRegistery: ghcr.io
-        dockerUserName: ${{ secrets.GHCR_USER }}
-        dockerPassword: ${{ secrets.GHCR_PAT }}
-        dockerImageName: ${{ github.repository }}
-        dockerTags: latest,${{ github.sha }}
+    uses: silvenga-docker/building/.github/workflows/publish-github.yaml@master
+    secrets: inherit
